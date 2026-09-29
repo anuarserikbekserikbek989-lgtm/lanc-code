@@ -216,15 +216,8 @@ width: 667px;
     document.getElementById('sendOrderBtn').addEventListener('click', function() {
         // 1. Собираем текст из полей ввода
         const nameValue = document.getElementById('clientName').value;
-        const phoneValue = document.getElementById('phone_number').value;
+        const phoneValue = document.getElementByI('phone_number').value;
         const commentValue = document.getElementById('commentsite').value;
-
-        // Проверяем, чтобы поля были заполнены
-        if (!nameValue.trim() || !phoneValue.trim()) {
-            alert("Пожалуйста, заполните ваше имя и номер телефона!");
-            return;
-        }
-
         // 2. Твои ключи
         const tgToken = "8993659223:AAGUDfeB7H4IALnElm3fSClmgqHgcMHfH5g";
         const tgChatId = "8772937687";
