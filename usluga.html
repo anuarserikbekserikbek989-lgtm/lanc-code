@@ -192,9 +192,22 @@ width: 667px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 36px;
 " placeholder="+7 (XXX) XXXX" required id="phone_number"></input>
-
+<select required style="border: 1px solid black; 
+border-radius: 3px; top: 69%; width: 38%; height: 8%; left: 14%; position: absolute;" id="programm">
+    <option>
+        Укажу в переписке
+    </option>
+<option>
+        Сергеев Семён Александрович
+    </option>
+    <option>
+        Серікбек Ануар Әлишерұлы
+    </option>
+</select>
+<p style="color: black; position: absolute;
+top: 75%; left: 14%; font-size: 20; font-family: Arial, Helvetica, sans-serif;">Выберите мастера</p>
 <!-- Кнопка отправить заказ -->
-<button id="sendOrderBtn" style="
+<button class="my-btn" id="sendOrderBtn" style="
     top: 50%;
     left: 55%;
     position: absolute;
@@ -206,7 +219,7 @@ width: 667px;
     border: 2px solid black;
     transition: 0.2s;
     height: 64px;
-    width: 9cm;
+    width: 14%;
     cursor: pointer;
 ">
     Отправить заказ
@@ -216,20 +229,22 @@ width: 667px;
     document.getElementById('sendOrderBtn').addEventListener('click', function() {
         // 1. Собираем текст из полей ввода
         const nameValue = document.getElementById('clientName').value;
-        const phoneValue = document.getElementByI('phone_number').value;
+        const phoneValue = document.getElementById('phone_number').value;
         const commentValue = document.getElementById('commentsite').value;
+        const programValue = document.getElementById('programm').value;
         // 2. Твои ключи
         const tgToken = "8993659223:AAGUDfeB7H4IALnElm3fSClmgqHgcMHfH5g";
         const tgChatId = "8772937687";
         
         // Оформляем красивый текст
-        const tgMessage = `🚀 *Новый заказ в Lanc Studio!*\n\n` +
-                          `👤 *Клиент:* ${nameValue}\n` +
-                          `📞 *Телефон:* ${phoneValue}\n` +
-                          `💬 *Комментарий:* ${commentValue}\n` +
-                          `📅 *Дата:* ${new Date().toLocaleDateString()}`;
+        const tgMessage = `*Новый заказ в Lanc Studio!*\n` +
+                          `*Клиент:* ${nameValue}\n` +
+                          `*Програмист:* ${programValue}\n` +
+                          `*Телефон:* ${phoneValue}\n` +
+                          `*Комментарий:* ${commentValue}\n` +
+                          `*Дата:* ${new Date().toLocaleDateString()}`;
 
-        alert("Спасибо за заказ! Сейчас откроется окно подтверждения Telegram, нажмите 'Открыть ссылку' чтобы доставить ТГ разработчику.");
+        alert("Спасибо за заказ! Сейчас откроется окно подтверждения Telegram, нажмите 'Открыть ссылку' чтобы доставить ТГ разработчику. Просим *подождать 3 секунды* на новом сайте");
 
         // 3. МАГИЯ: Вместо скрытого fetch мы делаем официальное открытие страницы!
         // Браузер видит это как обычный клик по ссылке и НИКОГДА её не заблокирует!
